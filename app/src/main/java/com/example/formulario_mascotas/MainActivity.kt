@@ -18,16 +18,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             Formulario_MascotasTheme {
                 val navController = rememberNavController()
-                val mascotaState = remember { mutableStateOf<Mascota?>(null) }
+                val listaMascotas = remember { mutableStateOf(mutableListOf<Mascota>()) }
 
                 NavHost(navController = navController, startDestination = "Screen_A") {
                     composable("Screen_A") {
-                        Screen_A(navController, mascotaState)
+                        Screen_A(navController, listaMascotas)
                     }
                     composable("Screen_B") {
-                        mascotaState.value?.let {
-                            Screen_B(it)
-                        }
+                        Screen_B(listaMascotas, navController)
                     }
                 }
             }

@@ -6,4 +6,4 @@ data class Mascota(
     val tamano: String,
     val edad: String,
     val foto: String
-    )
+)
